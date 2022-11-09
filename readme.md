@@ -14,15 +14,15 @@ In that optimal scenario calling `callAppBigBoxes(10,24)` will form a group of 1
 
 Each iteration of the loop will create a box of 32Kb, iterate over that box and fill it with the box name. Box length is asserted to be nominal. The box is then read by chunks of 64 bytes and we log any event where the read value did not match the expected value. Finally the box is deleted to free up the mbr and another iteration of the loop occurs, starting the process all over with a different box.
 
-One of this transaction group will thus, create, write and read 320kb worth of data in separate boxes.
+One of this group transaction will thus, create, write and read 320kb worth of data in 10 separate boxes.
 
 ### createManyBoxes
 
 This method will create many small boxes of 8 bytes each.
-Due to box references limitations, we send a group of 16 transactions that can contain reference for 127 boxes.
+Due to box references limitations, we send a group of 16 transactions that can contain references for 127 boxes.
 This method will iterate over these 127 boxes n times, create them, write max uint64 to them, read them, log any error and move over to the next iteration.
 
-In an optimal scenario calling `callAppManyBoxes(7500,240)` will form a group of 16 transaction, used to pass the 127 separate box reference for the loop. The 240 empty app calls will be made as inner tx to maximze our opcode budget and we are able to run 7500 iterations total.
+In an optimal scenario calling `callAppManyBoxes(7500,240)` will form a group of 16 transaction, used to pass the 127 separate box reference for the loop. The 240 empty app calls will be made as inner tx to maximize our opcode budget and we are able to run 7500 iterations total.
 
 ---
 
