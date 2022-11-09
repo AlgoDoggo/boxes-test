@@ -34,3 +34,5 @@ By running `npm run start` an array of 200 group transactions will be made and s
 To broadcast the calls and avoid getting rate limited we use all the providers available, algonode, algoexplorer and purestake. Make sure to input your purestake key in the .env file.
 
 The queue will then broadcast the 200 txs in a matter of a few seconds. I suspect the endpoints are behind some sort of load balancer because the transactions are broadcast in about 6 seconds, they should fill 2 blocks with 25k app calls each but these tx are rather spread over several blocks containing 3K app calls each. A solution to this would be to set up my own node, which I haven't done for this test.
+
+![ScreenShot](./screenshot.webp)
