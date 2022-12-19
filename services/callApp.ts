@@ -36,7 +36,7 @@ export const callAppBigBoxes = (testRuns: number, NumberOfNoops: number) => {
     },
     foreignApps: [appBudget],
     lease: new Uint8Array(randomBytes(32)),
-    boxes: [boxNames[0], boxNames[0], boxNames[0], boxNames[0], boxNames[0], boxNames[0], boxNames[0]],
+    boxes: new Array(7).fill(boxNames[0]),
   });
 
   const txsForRefs: Transaction[] = [];
@@ -48,7 +48,7 @@ export const callAppBigBoxes = (testRuns: number, NumberOfNoops: number) => {
         appArgs: [encodeArg("noop")],
         suggestedParams,
         lease: new Uint8Array(randomBytes(32)),
-        boxes: [boxNames[i], boxNames[i], boxNames[i], boxNames[i], boxNames[i], boxNames[i], boxNames[i], boxNames[i]],
+        boxes: new Array(8).fill(boxNames[i]),
       })
     );
   }
